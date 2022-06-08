@@ -21,9 +21,30 @@ let index = []
 for(let sentence of sentences){
     let s = {
         sentence: sentence.trim(), // ta bort whitespace runt meningen
-        words: () => sentence.split(" ")
+        words: () => sentence.split(" ") // array med ord
     }
+    // arr[arr.length-1]   get last element of array   remove . from end of word
+    s.lastWord = () => s.words()[s.words().length-1].split(".")[0]
     index.push(s)
 }
 
-log(index[100].words())
+log(index[100].lastWord())
+
+let rhymes = {}
+
+for(let sentence of index){
+    if(!rhymes[sentence.lastWord()]){
+        rhymes[sentence.lastWord()] = []
+    }
+    rhymes[sentence.lastWord()].push(sentence)
+}
+
+// filter a dictionary (obj) - remove single items (we only want rhymes)
+for(let key in rhymes){
+    if(rhymes[key].length < 2){
+        delete rhymes[key]
+    }
+}
+
+log(rhymes)
+

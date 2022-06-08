@@ -29,15 +29,15 @@ for(let sentence of sentences){
     index.push(s)
 }
 
-log(index[100].lastWord())
+log(index[100].lastSyllable())
 
 let rhymes = {}
 
 for(let sentence of index){
-    if(!rhymes[sentence.lastWord()]){
-        rhymes[sentence.lastWord()] = []
+    if(!rhymes[sentence.lastSyllable()]){
+        rhymes[sentence.lastSyllable()] = []
     }
-    rhymes[sentence.lastWord()].push(sentence)
+    rhymes[sentence.lastSyllable()].push(sentence)
 }
 
 // filter a dictionary (obj) - remove single items (we only want rhymes)
@@ -47,7 +47,28 @@ for(let key in rhymes){
     }
 }
 
-log(rhymes["squire"])
+// log(rhymes)
+
+let fun = []   // ["ire","iar","er"]
+for(let syllable of ["ire","iar","er","ier"]){
+    if(rhymes[syllable]){
+        fun.push(rhymes[syllable])
+    }
+}
+
+log(fun)
 
 
+let wordIndex = {}
+for(word of text.split(" ")){
+    word = word.split(".")[0].split("!")[0].split("?")[0]
+    word = word.toLowerCase()
+    word = word.replace(/[\'\"]/g,"")
+    if(!wordIndex[word]){
+        wordIndex[word] = 0
+    }
+    wordIndex[word]++
+}
+
+log(wordIndex)
 

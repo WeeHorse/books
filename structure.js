@@ -20,9 +20,10 @@ let index = []
 
 for(let sentence of sentences){
     let s = {
-        sentence: sentence.trim() // ta bort whitespace runt meningen
+        sentence: sentence.trim(), // ta bort whitespace runt meningen
+        words: () => sentence.split(" ")
     }
     index.push(s)
 }
 
-log(index[103])
+log(index[100].words())

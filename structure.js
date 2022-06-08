@@ -61,14 +61,14 @@ log(fun)
 
 let wordIndex = {}
 for(word of text.split(" ")){
-    word = word.split(".")[0].split("!")[0].split("?")[0]
-    word = word.toLowerCase()
-    word = word.replace(/[\'\"]/g,"")
-    if(!wordIndex[word]){
-        wordIndex[word] = 0
+    let w = word.split(".")[0].split("!")[0].split("?")[0]
+    w = w.toLowerCase()
+    w = w.replace(/[\'\"\,\;]/g,"")
+    if(!wordIndex[w]){
+        wordIndex[w] = 0
     }
-    wordIndex[word]++
+    wordIndex[w]++
 }
 
-log(wordIndex)
+log(wordIndex["squire"])
 

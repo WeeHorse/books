@@ -25,6 +25,7 @@ for(let sentence of sentences){
     }
     // arr[arr.length-1]   get last element of array   remove . from end of word
     s.lastWord = () => s.words()[s.words().length-1].split(".")[0]
+    s.lastSyllable = () => s.lastWord().match(/[aeiou].{1,2}$/g)
     index.push(s)
 }
 
@@ -46,5 +47,7 @@ for(let key in rhymes){
     }
 }
 
-log(rhymes)
+log(rhymes["squire"])
+
+
 
